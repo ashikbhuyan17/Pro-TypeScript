@@ -1,4 +1,6 @@
 // const newData = {...myInfo ,crush};
+//Constraints in Generics
+// generic type ke force  kora je amr type emn oi hbe er baire hbe na 
 
 type MandatoryTypes = { name: string; age: number; salary: number };
 interface MandatoryInterface {
@@ -13,13 +15,13 @@ const addMeInMyCrushMind = <T extends MandatoryInterface>(myInfo: T) => {
   return newData;
 };
 
-type MyInFoType = {
-  name: string;
-  age: number;
-  salary: number;
-  other1: boolean;
-  other2: null;
-};
+// type MyInFoType = {
+//   name: string;
+//   age: number;
+//   salary: number;
+//   other1: boolean;
+//   other2: null;
+// };
 const myInfo = {
   name: "Persian",
   age: 100,
