@@ -28,16 +28,18 @@ interface IAddNumbers {
 
 type rollNumbersType = number[];
 interface IRollNumbers {
+  // array index ta number hbe => [index: number]
+  // jey value gula hold koratce oigula srting,num etc.........  => string
   [index: number]: string;
 }
-const rollNumbers: IRollNumbers = ["1", "4", "5"]; //[index]
+const rollNumbers: IRollNumbers = ['1', '4', '5']; //[index]   => this time use type alias cz its clean just object type will be interface
 
 const addNumbers: addNumbersType = (num1, num2) => num1 + num2;
 
 const user: extendedUser = {
-  name: "Omanush",
+  name: 'Omanush',
   age: 2000,
-  role: "Unknown",
+  role: 'Unknown',
 };
 // const userWithTypeAlias: User = {
 //   name: "Type Alias",
