@@ -4,3 +4,6 @@ primitive e amra type use krbo and object(object,function,array) e Interface use
 interface can extends 
 
 type alias can not extends bt use Unions and Intersection Types
+
+
+npx ts-node-dev  --respawn ./src/function.ts
