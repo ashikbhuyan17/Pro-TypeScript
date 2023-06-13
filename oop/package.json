@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node-dev --respawn --transpile-only src/constructor.ts",
+    "start": "ts-node-dev --respawn --transpile-only src/sum.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
