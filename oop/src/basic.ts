@@ -1,4 +1,8 @@
 class Employee {
+  displayName //method
+      () {
+      throw new Error("Method not implemented.");
+  }
   empCode!: number;
   empName!: string;
 
