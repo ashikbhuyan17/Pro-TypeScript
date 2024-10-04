@@ -23,7 +23,8 @@ const relationWithSalary2: GenericTuple<RelationWithSalaryType, string> = [
 
 type GenericArray<T> = Array<T>; //jekono type array ke se consider korbe
 
-const rollNumbers: GenericArray<number> = [44, 12, 4];
+// const rollNumbers4: Array<number> = [44, 12, 4];
+const rollNumbers: GenericArray<number| string> = [44, 12, 4,'fgg'];
 const rollNumbers2: GenericArray<string> = ['44', '12', '4'];
 const rolllNumbers3: GenericArray<boolean> = [true, false];
 
@@ -40,8 +41,7 @@ const userNameAndRollNumbers: GenericArray<NameRollType> = [
   },
 ];
 
-add(x, y, z);
-add(3, 4, 5);
+
 
 // generic tuple
 type GenericTuple<X, Y> = [X, Y];
@@ -55,3 +55,18 @@ const relation: GenericTuple<{ a: number; b: string }, Number> = [
   },
   10,
 ];
+
+
+type commonGen<T> = Array<T>
+const jamal:commonGen<number> = [5,5,4,43,3,3]
+const b:commonGen<string> = ['s','c']
+
+// const obj:Array<{a:number,b:string}>=[{
+//   a:30,
+//   b:'jamal'
+// }]
+
+const obj:commonGen<{a:number,b:string}>=[{
+  a:30,
+  b:'jamal'
+}]
