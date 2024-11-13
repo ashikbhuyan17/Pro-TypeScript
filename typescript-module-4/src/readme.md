@@ -1,4 +1,7 @@
-Key Differences:
+
+[Encapsulation_Link : ](https://java.howtocode.dev/5/5.3) https://java.howtocode.dev/5/5.3
+
+### ========================Key Differences: =================
 
 With Constructor:
 -   অবজেক্টটি তৈরি হওয়ার সময় ভ্যালুগুলো দিয়ে ইনিশিয়ালাইজ হয়। উদাহরণস্বরূপ, new Car("Toyota", 2020) লিখলে, একই সময়ে অবজেক্টের প্রোপার্টিগুলো সেট হয়ে যাবে।
