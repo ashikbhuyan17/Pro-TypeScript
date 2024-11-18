@@ -10,7 +10,7 @@
     This way, you can control how the properties are accessed or modified.
 */
 
-class CarPriProAcc {
+class CarPriProAcc1 {
   // Private properties
   constructor(private model: string, private year: number) {}
 
@@ -34,7 +34,7 @@ class CarPriProAcc {
   }
 }
 
-const myCarPriProAcc = new CarPriProAcc('Toyota', 2020);
+const myCarPriProAcc1 = new CarPriProAcc('Toyota', 2020);
 myCarPriProAcc.startEngine(); // Output: Engine of car from year 2020 has started.
 
 // Accessing private property using getter
