@@ -40,6 +40,7 @@ console.log('================================================');
 
  */
 class Person {
+    // Constructor to initialize the object
     constructor(name, age) {
         this.name = name;
         this.age = age;
