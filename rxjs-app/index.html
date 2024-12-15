@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h3>of vs new observable ()</h3>
+
+    <p>
+      In RxJS, of and new Observable() are two ways to create observables, 1. of
+      — Simplified Observable Creation for Static Values
+    </p>
+
+    <p><code></code>`javascript const { of } = require(&#39;rxjs&#39;);</p>
+
+    <pre><code>const observable = of(1, 2, 3, 4, 5);
+
+observable.subscribe({
+next: (value) =&gt; console.log(value),
+complete: () =&gt; console.log(&#39;Completed&#39;)
+});</code></pre>
+
+    <p><code></code>`</p>
+
+    <ol>
+      <li>
+        <p>
+          new Observable() — Flexible, Customizable Observable Creation Using
+          new Observable() gives you full control over the observable’s
+          behavior, allowing you to define exactly how and when values are
+          emitted. This is useful for creating complex observables, such as
+          those that emit values over time, respond to user actions, handle
+          errors, or don’t complete right away. <code></code>`javascript const {
+          Observable } = require(&#39;rxjs&#39;);
+        </p>
+        <p>
+          const observable = new Observable((subscriber) =&gt; {
+          subscriber.next(1); subscriber.next(2); subscriber.next(3);
+        </p>
+        <p>
+          setTimeout(() =&gt; { subscriber.next(4); subscriber.complete(); },
+          1000); // Emit after a delay
+        </p>
+        <p>// Note: No need to return anything in simple examples });</p>
+        <p>
+          observable.subscribe({ next: (value) =&gt; console.log(value),
+          complete: () =&gt; console.log(&#39;Completed&#39;) });
+        </p>
+      </li>
+    </ol>
+
+    <p><code></code>`</p>
+
+    <h1>Observable in JavaScript</h1>
+
+    <h2>Observable Overview</h2>
+
+    <ul>
+      <li>
+        <strong>Observable</strong> একটি ডেটা স্ট্রিম বা ইভেন্টের সিরিজ যা সময়ের
+        সাথে ইভেন্ট আসতে থাকে.
+      </li>
+      <li>One-way (emits values)</li>
+    </ul>
+
+    <h3>Example (Real-Life Analogy):</h3>
+
+    <ul>
+      <li>
+        Observable হলো কারও <strong>YouTube channel</strong>:
+        <ul>
+          <li>
+            Observable is like a youtube channel of someone else. (( It uploads
+            new videos(data) from time to time, so it is a data source for you))
+          </li>
+          <li>Your youtube account is an <strong>Observer</strong></li>
+          <li>
+            Your youtube account (Observer) can only get notifications about
+            whether someone else&#39;s youtube channel (Observable) has uploaded
+            a new video (has new data) or made a livestream (new event) only if
+            you have subscribed to that channel
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+    <p>
+      ...
+      <strong>শুধুমাত্র তখনই যদি আপনি সেই চ্যানেলকে সাবস্ক্রাইব করেন।</strong>
+    </p>
+
+    <hr />
+
+    <h2>Observer এর প্রধান কলব্যাক ফাংশন:</h2>
+
+    <p>
+      Observer তিনটি প্রধান ফাংশনের মাধ্যমে Observable থেকে ডেটা/ইভেন্ট গ্রহণ
+      করে:
+    </p>
+
+    <ol>
+      <li>
+        <p>
+          <strong><code>next(value)</code></strong
+          ><br />যখন Observable থেকে নতুন মান পাওয়া যাবে, তখন এটি কল হবে।
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong><code>error(err)</code></strong
+          ><br />যখন কোনো ত্রুটি ঘটে, তখন এটি কল হবে।
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong><code>complete()</code></strong
+          ><br />যখন Observable তার স্ট্রিম শেষ করে, তখন এটি কল হবে।
+        </p>
+      </li>
+    </ol>
+
+    <hr />
+
+    <h3>উদাহরণ (Code Example)</h3>
+
+    <p>নীচে একটি প্রোগ্রামেটিক উদাহরণ দেওয়া হলো:</p>
+
+    <p><code></code>`javascript import { Observable } from &#39;rxjs&#39;;</p>
+
+    <p>
+      // Observable তৈরি করা const observable = new Observable(subscriber =&gt;
+      { subscriber.next(&#39;ভিডিও ১ আপলোড হয়েছে&#39;);
+      subscriber.next(&#39;ভিডিও ২ আপলোড হয়েছে&#39;);
+      subscriber.error(&#39;ত্রুটি: ইন্টারনেট সমস্যা&#39;); // ত্রুটি ইমিট করা
+      subscriber.complete(); // স্ট্রিম শেষ করা });
+    </p>
+
+    <p>
+      // Observer তৈরি করা const observer = { next: (value) =&gt;
+      console.log(<code>নোটিফিকেশন: ${value}</code>), error: (err) =&gt;
+      console.error(<code>ত্রুটি: ${err}</code>), complete: () =&gt;
+      console.log(&#39;আর কোনো নোটিফিকেশন নেই।&#39;), };
+    </p>
+
+    <p>
+      // Observer-কে Observable-এ subscribe করানো
+      observable.subscribe(observer);
+    </p>
+
+    <p><code></code>`</p>
+
+    <p>=================================</p>
+
+    <h1><code>asObservable</code></h1>
+
+    <h2>Overview</h2>
+
+    <p>
+      <code>asObservable</code> মূলত একটি <strong>Subject</strong> বা অন্য
+      <strong>Observable</strong>-কে <strong>Observable</strong> হিসেবে ব্যবহার
+      করার জন্য ব্যবহৃত হয়। এটি মূল Observable-এর behavior পরিবর্তন করে না।
+    </p>
+
+    <hr />
+
+    <h2>Key Features</h2>
+
+    <ul>
+      <li>
+        <code>asObservable</code> এটি একটি মেথড যা Subject/BehaviorSubject কে
+        Observable এ রূপান্তর করে। এটি মূল Observable-এর behavior পরিবর্তন করে
+        না।
+      </li>
+    </ul>
+
+    <hr />
+
+    <h3>উদাহরণ: <code>asObservable</code> ব্যবহার</h3>
+
+    <p>নিচে একটি TypeScript উদাহরণ দেওয়া হলো:</p>
+
+    <p><code></code>`typescript import { Subject } from &#39;rxjs&#39;;</p>
+
+    <p>// একটি Subject তৈরি করা const subject = new Subject();</p>
+
+    <p>
+      // Subject-কে Observable হিসেবে ব্যবহার করা const observable =
+      subject.asObservable();
+    </p>
+
+    <p>
+      // Observable-এ subscribe করা observable.subscribe(data =&gt;
+      console.log(&#39;Observable:&#39;, data));
+    </p>
+
+    <p>
+      // Subject থেকে ডেটা পাঠানো subject.next(&#39;Data 1&#39;); // আউটপুট:
+      Observable: Data 1
+    </p>
+
+    <h1>```</h1>
+
+    <h1>Subject in RxJS</h1>
+
+    <h2>What is a Subject?</h2>
+
+    <p>
+      <strong>Subject</strong> হলো RxJS-এ একটি বিশেষ ধরনের Observable যা ডেটা
+      ইমিট এবং ডেটা গ্রহণ, দুটিই করতে পারে। এটি একসাথে একাধিক সাবস্ক্রাইবারকে
+      একই ইভেন্ট বা ডেটা স্ট্রিম শেয়ার করতে পারে। অর্থাৎ, একাধিক জায়গায় একই ডেটা
+      পৌঁছে দিতে Subject ব্যবহার করা হয়। - Two-way (emits and receives) - You
+      can push values into a Subject, and subscribers will receive them.
+    </p>
+
+    <hr />
+
+    <h2>Key Features</h2>
+
+    <ul>
+      <li>
+        A <strong>Subject</strong> acts as both an
+        <strong>Observable</strong> (data source) and an
+        <strong>Observer</strong> (can receive data).
+      </li>
+      <li>It allows multiple subscribers to share the same data stream.</li>
+    </ul>
+
+    <hr />
+
+    <h2>উদাহরণ: Subject ব্যবহার</h2>
+
+    <p>
+      নিচে একটি TypeScript উদাহরণ দেওয়া হলো যেখানে
+      <strong>Subject</strong> ব্যবহার করা হয়েছে:
+    </p>
+
+    <p><code></code>`typescript import { Subject } from &#39;rxjs&#39;;</p>
+
+    <p>// একটি Subject তৈরি করা const subject = new Subject();</p>
+
+    <p>
+      // Subject-এ দুইজন Subscriber যোগ করা subject.subscribe(data =&gt;
+      console.log(&#39;Subscriber 1:&#39;, data)); subject.subscribe(data =&gt;
+      console.log(&#39;Subscriber 2:&#39;, data));
+    </p>
+
+    <p>
+      // Subject থেকে ডেটা পাঠানো subject.next(&#39;Hello&#39;); // আউটপুট: //
+      Subscriber 1: Hello // Subscriber 2: Hello
+    </p>
+
+    <p><code></code>`</p>
+
+    <p>=====================================================</p>
+
+    <h1>Subject vs Observable in RxJS</h1>
+
+    <h2>Observable</h2>
+
+    <ol>
+      <li>
+        <p><strong>একক সাবস্ক্রাইবারের জন্য</strong>:</p>
+        <ul>
+          <li>
+            <p>
+              Observable সাধারণত প্রতিটি সাবস্ক্রাইবারের জন্য আলাদা করে ডেটা
+              স্ট্রিম তৈরি করে।
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>সাধারণ ডেটা স্ট্রিম</strong>:</p>
+        <ul>
+          <li>
+            Observable শুধুমাত্র ডেটা ইমিট করে, তবে এটি নিজে থেকে ডেটা গ্রহণ বা
+            সেই ডেটা শেয়ার করতে পারে না।
+          </li>
+          <li><p>এটি কেবলমাত্র একটি ডেটা উৎস হিসেবে কাজ করে।</p></li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>Multicasting নয়</strong>:</p>
+        <ul>
+          <li>
+            <p>
+              সাধারণ Observable সাধারণত multicasting সমর্থন করে না, অর্থাৎ
+              একাধিক সাবস্ক্রাইবার থাকলেও তাদের প্রত্যেকেই আলাদা স্ট্রিম পায়।
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>পাশ থেকে ডেটা পুশ করতে পারে না</strong>:</p>
+        <ul>
+          <li>
+            Observable এর ক্ষেত্রে আমরা কেবলমাত্র সাবস্ক্রাইব করার মাধ্যমে
+            স্ট্রিমের ডেটা নিতে পারি। এটি সাধারণত ডেটা পুশ করতে পারে না, কেবল
+            সাবস্ক্রাইবারের জন্য ডেটা সরবরাহ করে।
+          </li>
+        </ul>
+      </li>
+    </ol>
+
+    <hr />
+
+    <h2>Subject</h2>
+
+    <ol>
+      <li>
+        <p><strong>Multicasting সমর্থন করে</strong>:</p>
+        <ul>
+          <li>
+            <p>
+              Subject একবার ডেটা ইমিট করলে সেটি সব সাবস্ক্রাইবারকে একই ডেটা
+              পাঠায়। এটি একাধিক সাবস্ক্রাইবারের জন্য একই স্ট্রিম শেয়ার করতে
+              পারে।
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>ডেটা ইমিট করতে এবং গ্রহণ করতে পারে</strong>:</p>
+        <ul>
+          <li>Subject কে আমরা ডেটা ইমিট বা পুশ করার জন্য ব্যবহার করতে পারি।</li>
+          <li>
+            <p>
+              এটি Observer হিসেবে ডেটা গ্রহণ করতে পারে এবং Observable হিসেবে
+              ডেটা ইমিট করতে পারে।
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>EventEmitter এর মতো কাজ করে</strong>:</p>
+        <ul>
+          <li>
+            <p>
+              Subject এমনভাবে কাজ করে যেন এটি <strong>EventEmitter</strong>,
+              যেখানে একবার ডেটা ইমিট হলে সেটি প্রত্যেক সাবস্ক্রাইবারের কাছে
+              পৌঁছে।
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p><strong>শেয়ারড স্টেট</strong>:</p>
+        <ul>
+          <li>Subject সব সাবস্ক্রাইবারদের জন্য একই স্ট্রিম শেয়ার করে।</li>
+          <li>
+            কোনো নতুন সাবস্ক্রাইবার যুক্ত হলে সে ডেটা স্ট্রিমের বর্তমান অবস্থার
+            উপর ভিত্তি করে ডেটা পায়।
+          </li>
+        </ul>
+      </li>
+    </ol>
+
+    <hr />
+
+    <h2>Subject vs Observable: Comparison Table</h2>
+
+    <p>
+      | Feature | Observable | Subject |
+      |-----------------------------------|-----------------------------------------|----------------------------------------|
+      | <strong>Multicasting</strong> | সমর্থন করে না, আলাদা স্ট্রিম তৈরি করে। |
+      সমর্থন করে, একই স্ট্রিম শেয়ার করে। | | <strong>Data Emission</strong> |
+      শুধুমাত্র ডেটা ইমিট করতে পারে। | ডেটা ইমিট এবং গ্রহণ দুটোই করতে পারে। | |
+      <strong>Acts like EventEmitter</strong> | নয়। | হ্যাঁ। | |
+      <strong>Shared State</strong> | আলাদা সাবস্ক্রাইবারদের জন্য আলাদা। | সব
+      সাবস্ক্রাইবারদের জন্য শেয়ারড। | | <strong>Usage</strong> | ডেটা স্ট্রিম
+      কেবল পড়ার জন্য। | ডেটা স্ট্রিম পড়া এবং লিখা উভয়ের জন্য। |
+    </p>
+
+    <hr />
+
+    <h3>Summary</h3>
+
+    <ul>
+      <li>
+        <strong>Observable</strong>: একটি আলাদা ডেটা স্ট্রিম প্রতিটি
+        সাবস্ক্রাইবারের জন্য তৈরি করে। এটি শুধুমাত্র ডেটা সরবরাহ করে।
+      </li>
+      <li>
+        <strong>Subject</strong>: একই ডেটা স্ট্রিম সব সাবস্ক্রাইবার শেয়ার করতে
+        পারে এবং ডেটা পাঠাতে এবং গ্রহণ করতে পারে। এটি
+        <strong>EventEmitter</strong>-এর মতো কাজ করে।
+      </li>
+    </ul>
+
+    <p>=======================================</p>
+
+    <h1>BehaviorSubject in RxJS</h1>
+
+    <h2>What is a BehaviorSubject?</h2>
+
+    <p>
+      <strong>BehaviorSubject</strong> হলো <strong>Subject</strong>-এর একটি
+      বিশেষ ধরন, যা সর্বশেষ emitted value ধরে রাখে।<br />যখন কোনো নতুন
+      subscriber যোগ হয়, তখন তাকে সর্বশেষ emitted value প্রদান করে।
+    </p>
+
+    <hr />
+
+    <h2>Key Features</h2>
+
+    <ol>
+      <li>
+        <p>
+          <strong>Initial Value</strong>: BehaviorSubject তৈরি করার সময় একটি
+          প্রাথমিক মান (initial value) সেট করা হয়।
+        </p>
+        <ul>
+          <li>
+            <p>
+              এই মানটি নতুন subscriber-কে প্রদান করা হয়, যদি কোনো মান ইমিট না
+              করা হয়ে থাকে।
+            </p>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <p>
+          <strong>Latest Value Retention</strong>: সর্বশেষ emitted value মনে
+          রাখে এবং নতুন subscriber-কে সেই মান প্রদান করে।
+        </p>
+      </li>
+      <li>
+        <p>
+          <strong>Multicasting</strong>: BehaviorSubject একাধিক subscriber-কে
+          একই মান সরবরাহ করতে পারে।
+        </p>
+      </li>
+    </ol>
+
+    <hr />
+
+    <h2>উদাহরণ: BehaviorSubject ব্যবহার</h2>
+
+    <p>
+      <code></code>`typescript import { BehaviorSubject } from &#39;rxjs&#39;;
+    </p>
+
+    <p>
+      // BehaviorSubject তৈরি করা const behaviorSubject = new
+      BehaviorSubject(&#39;Initial Value&#39;);
+    </p>
+
+    <p>
+      // প্রথম Subscriber যোগ করা behaviorSubject.subscribe(data =&gt;
+      console.log(&#39;Subscriber 1:&#39;, data)); // আউটপুট: Subscriber 1:
+      Initial Value
+    </p>
+
+    <p>
+      // BehaviorSubject-এ নতুন মান পাঠানো behaviorSubject.next(&#39;Updated
+      Value&#39;);
+    </p>
+
+    <p>
+      // দ্বিতীয় Subscriber যোগ করা behaviorSubject.subscribe(data =&gt;
+      console.log(&#39;Subscriber 2:&#39;, data)); // আউটপুট: Subscriber 2:
+      Updated Value
+    </p>
+  </body>
+</html>
