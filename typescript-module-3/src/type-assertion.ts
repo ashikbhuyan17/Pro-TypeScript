@@ -1,3 +1,23 @@
+/**
+ * 
+  Type Assertion (টাইপ অ্যাসারশন)  <type>variableName
+  
+  Type Assertion হলো TypeScript-এ এমন একটি উপায়, যেখানে তুমি TypeScript-কে জোর করে বলে দাও যে, 
+  কোনো ভ্যারিয়েবল একটা নির্দিষ্ট টাইপে থাকবে। এটা অনেকটা “আমি জানি এটা কী টাইপ হবে” — এই ভরসার মতো।
+  টাইপScript-কে জোর করে জানানো যে ভ্যারিয়েবল একটি নির্দিষ্ট টাইপের
+  follow both way: 
+  // const resultToBeNumber = kgToGram(1000) as number ;
+  // const resultToBeNumber = <number>kgToGram(1000);
+
+
+  // Angle-bracket syntax (JSX ছাড়া ফাইলের জন্য)
+  let value = <string>'Hello';
+
+  // as syntax (সব জায়গায় safe)
+  let value2 = 'Hello' as string;
+ * 
+ */
+
 // // let emni: any;
 
 // // emni = "Next level web devlopment";
@@ -16,6 +36,7 @@
 // //   }
 // // }
 
+// // const resultToBeNumber = kgToGram(1000) as number ;
 // // const resultToBeNumber = <number>kgToGram(1000);
 // // const resultToBeString = <string>kgToGram("1000");
 
@@ -64,11 +85,11 @@
 //   return newMind;
 // };
 const addMeToCrushMind = <T extends { name: string }>(param: T) => {
-  const crushName = "Kate Winslet";
+  const crushName = 'Kate Winslet';
   const newMind = { ...param, crushName };
   return newMind;
 };
 
-const result = addMeToCrushMind({ name: "Farhan" });
+const result = addMeToCrushMind({ name: 'Farhan' });
 
 // result.

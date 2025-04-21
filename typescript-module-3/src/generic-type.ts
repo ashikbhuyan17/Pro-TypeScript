@@ -1,3 +1,9 @@
+/**
+ *
+ * Generic হলো যা  TypeScript- ke  ডাইনামিক টাইপ ব্যবহারের সুযোগ দেয়, কিন্তু টাইপ সেফটি বজায় রেখে।
+ * 👉 এটি ফাংশন, টাইপ, ইন্টারফেস বা ক্লাসে ব্যবহার করা যায়, যেখানে টাইপ আগে থেকে না জানলেও আমরা generic হিসেবে তা ব্যবহার করতে পারি।
+ */
+
 // type RelationWithSalaryType = { name: string; salary: number };
 
 interface RelationWithSalaryInterface {
@@ -24,7 +30,7 @@ const relationWithSalary2: GenericTuple<RelationWithSalaryType, string> = [
 type GenericArray<T> = Array<T>; //jekono type array ke se consider korbe
 
 // const rollNumbers4: Array<number> = [44, 12, 4];
-const rollNumbers: GenericArray<number| string> = [44, 12, 4,'fgg'];
+const rollNumbers: GenericArray<number | string> = [44, 12, 4, 'fgg'];
 const rollNumbers2: GenericArray<string> = ['44', '12', '4'];
 const rolllNumbers3: GenericArray<boolean> = [true, false];
 
@@ -41,8 +47,6 @@ const userNameAndRollNumbers: GenericArray<NameRollType> = [
   },
 ];
 
-
-
 // generic tuple
 type GenericTuple<X, Y> = [X, Y];
 // type GenericTuple<X, Y> = Array<X, Y>; //Generic type 'Array<T>' requires 1 type argument(s)
@@ -56,17 +60,37 @@ const relation: GenericTuple<{ a: number; b: string }, Number> = [
   10,
 ];
 
-
-type commonGen<T> = Array<T>
-const jamal:commonGen<number> = [5,5,4,43,3,3]
-const b:commonGen<string> = ['s','c']
+type commonGen<T> = Array<T>;
+const jamal: commonGen<number> = [5, 5, 4, 43, 3, 3];
+const b: commonGen<string> = ['s', 'c'];
 
 // const obj:Array<{a:number,b:string}>=[{
 //   a:30,
 //   b:'jamal'
 // }]
 
-const obj:commonGen<{a:number,b:string}>=[{
-  a:30,
-  b:'jamal'
-}]
+const obj: commonGen<{ a: number; b: string }> = [
+  {
+    a: 30,
+    b: 'jamal',
+  },
+];
+
+// ============================================================
+type ApiResponse<T> = {
+  success: boolean;
+  data: T;
+};
+
+const userResponse: ApiResponse<{ name: string; age: number }> = {
+  success: true,
+  data: {
+    name: 'Zaki',
+    age: 30,
+  },
+};
+
+const stringResponse: ApiResponse<string> = {
+  success: true,
+  data: 'This is a message',
+};
