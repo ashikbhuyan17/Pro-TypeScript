@@ -29,7 +29,13 @@ const relationWithSalary2: GenericTuple<RelationWithSalaryType, string> = [
 
 type GenericArray<T> = Array<T>; //jekono type array ke se consider korbe
 
+// ==============manual array =============
 // const rollNumbers4: Array<number> = [44, 12, 4];
+// const rollNumbers: Array<number | string> = [44, 12, 4, 'fgg'];
+// const rollNumbers2: Array<string> = ['44', '12', '4'];
+// const rolllNumbers3: Array<boolean> = [true, false];
+// const rolllNumbers4: Array<{name:string, age:number}> = [{name:'jamal',age:'20'},{name:'jamal',age:'20'}};
+// const rolllNumbers5: {name:string, age:number}[] = [{name:'jamal',age:'20'},{name:'jamal',age:'20'}};
 const rollNumbers: GenericArray<number | string> = [44, 12, 4, 'fgg'];
 const rollNumbers2: GenericArray<string> = ['44', '12', '4'];
 const rolllNumbers3: GenericArray<boolean> = [true, false];

@@ -16,7 +16,7 @@ myDog1.makeSound(); // Output: Dog barks.
 
 console.log('================================================');
 
-// উদাহরণ ২: super ব্যবহার করে Parent Class-এর Method কল করা
+// উদাহরণ ২: super ব্যবহার করে Parent Class-এর Method কল করা and passes the property values
 class Animal2 {
   makeSound(): void {
     console.log('Some generic animal sound.');
@@ -76,9 +76,9 @@ student1.greet(); // Output: Hello, my name is John.
 const student2 = new Person('Jane', 25);
 student2.greet(); // Output: Hello, my name is Jane. I am 25 years old.
 
-console.log('================= Access Modifiers ===============================');
-
-
+console.log(
+  '================= Access Modifiers ==============================='
+);
 
 // উদাহরণ ৪: Access Modifiers সহ Method Overriding
 class Vehicle {
