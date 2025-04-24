@@ -3,7 +3,7 @@ step2: Schema
 step3: Model
 step4: Database query on model
 
-<!-- mongoose hocce mongodb er wrapper 
+<!-- mongoose hocce mongodb er wrapper , mongoose is an object data modeling (ODM) libary for mongoDb
 insert and insertmany shudhu mongodb te kaj korbe bt mongoose e kaj korbe na  , baki sob mongodb method mongoose e support korbe 
  -->
 <!-- 
@@ -34,3 +34,13 @@ ekta method attarched thake setay hocce  instance method.
    return user
  }
   -->
+MVC হল এমন একটি আর্কিটেকচারাল প্যাটার্ন, যেখানে অ্যাপ্লিকেশনকে তিনটি ভাগে ভাগ করা হয়— Model, View, এবং Controller। এটি কোডকে পরিষ্কারভাবে আলাদা করে, যাতে রক্ষণাবেক্ষণ সহজ হয়।
+
+MVC প্যাটার্নে একটি অ্যাপ্লিকেশনকে তিনটি ভাগে ভাগ করা হয়:
+Model (মডেল) – ডেটা এবং লজিক সংরক্ষণ করে। যেমন: ডাটাবেস, ডেটার নিয়মকানুন।   //ডেটা ম্যানেজ করে, যেমন ডাটাবেস সংযোগ, ভ্যালিডেশন, ও বিজনেস লজিক।
+View (ভিউ) – ব্যবহারকারীর সামনে যেটা দেখা যায়, UI বা উপস্থাপন অংশ।
+Controller (কন্ট্রোলার) – ব্যবহারকারীর ইনপুট নেয় এবং সেই অনুযায়ী মডেল ও ভিউকে আপডেট করে। //HTTP রিকোয়েস্ট হ্যান্ডেল করে, মডেল থেকে ডেটা নিয়ে ভিউতে পাঠায়।
+
+
+ What is the Modular Pattern?
+Modular Pattern হল ফ্লেক্সিবল প্যাটার্ন  যেখানে পুরো অ্যাপ্লিকেশনকে ছোট ছোট "মডিউলে" ভাগ করা হয়। প্রতিটি মডিউল একেকটি ফিচার বা ফাংশনালিটির জন্য দায়ী।
