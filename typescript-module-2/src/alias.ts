@@ -1,3 +1,4 @@
+// type দিয়ে কাস্টম টাইপ তৈরি করা যায়, যেনো কোডে পুনরায় ব্যবহার করা সহজ হয়।
 type CrushType = {
   name: string;
   age?: number;
@@ -6,16 +7,16 @@ type CrushType = {
 };
 
 const crush1: CrushType = {
-  name: "Moina Pakhi",
+  name: 'Moina Pakhi',
   age: 22,
-  profession: "Web Developer",
-  address: "Uganda",
+  profession: 'Web Developer',
+  address: 'Uganda',
 };
 
 const crush2: CrushType = {
-  name: "Tia Pakhi",
-  profession: "Next Level web developer",
-  address: "mexico",
+  name: 'Tia Pakhi',
+  profession: 'Next Level web developer',
+  address: 'mexico',
 };
 
 type CrushMarriedType = boolean;
@@ -24,7 +25,7 @@ const isCrushMarried: CrushMarriedType = false;
 
 type CourseNameType = string;
 
-const courseName: CourseNameType = "Next Level Web Development";
+const courseName: CourseNameType = 'Next Level Web Development';
 
 type OperationType = (x: number, y: number) => number;
 

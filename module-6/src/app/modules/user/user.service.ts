@@ -1,29 +1,34 @@
-import { promises } from "dns";
-import { IUser } from "./user.interface";
-import User from "./user.model";
-
+import { IUser } from './user.interface';
+import User from './user.model';
 
 export const createUserToDB = async (payload: IUser): Promise<IUser> => {
-  console.log("🚀 ~ createUserToDB ~ payload:", payload)
   // creating a new user
   const user = new User(payload); //User -> class  user -> instance
-  await user.save(); // instance method
-  // console.log(user.fullName());
+  await user.save();
+  console.log(user.fullName());
 
   return user;
 };
 
-
 export const getUsersFromDB = async (): Promise<IUser[]> => {
-  const users = await User.find().select('-_id -__v')
-  // const users = await User.find().select('-_id -__v -name' )
+  const users = await User.find();
   return users;
 };
 
-export const getUserByIdFromDB = async (userId: string): Promise<IUser|null> => {
-  const user = await User.findOne({ id: userId },{
-    name:1,contactNo:1
-  })
+export const getUserByIdFromDB = async (
+  payload: string
+): Promise<IUser | null> => {
+  const user = await User.findOne({ id: payload }, { name: 1, contactNo: 1 });
   return user;
-}
+};
 
+export const getAdminUsersFromDB = async () => {
+  const admins = await User.getAdminUsers();
+  console.log(admins);
+  return admins;
+};
+
+//Class -> Attach -> Method -> Directly call using Class
+// user = new User
+// user.   instance methods
+// User.getAdminUsers()

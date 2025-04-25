@@ -1,8 +1,8 @@
-import { HydratedDocument, Model } from "mongoose";
+import { HydratedDocument, Model } from 'mongoose';
 
 export interface IUser {
-  id: string | any;
-  role: "student";
+  id: string;
+  role: 'student';
   password: string;
   name: {
     firstName: string;
@@ -10,7 +10,7 @@ export interface IUser {
     lastName: string;
   };
   dateOfBirth?: string;
-  gender: "male" | "female";
+  gender: 'male' | 'female';
   email?: string;
   contactNo: string;
   emergencyContactNo: string;

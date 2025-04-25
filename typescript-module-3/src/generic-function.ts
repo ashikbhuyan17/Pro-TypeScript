@@ -3,6 +3,8 @@
 // const createArray = (param: string): string[] => {
 //   return [param];
 // };
+
+// [X, Y] tuple return cz ekne multiple , and single hole T[]
 // const createArray1 = <X, Y>(param1: X, param2: Y): [X, Y] => {
 //   return [param1, param2];
 // };
