@@ -1,23 +1,28 @@
 {
-  "name": "partice-mongoose",
+  "name": "module-6",
   "version": "1.0.0",
-  "description": "",
+  "description": "step1: Interface\r step2: Schema\r step3: Model\r step4: Database query on model",
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
+  "type": "commonjs",
   "devDependencies": {
-    "@types/cors": "^2.8.13",
-    "typescript": "^5.0.4"
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.2",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.7.2"
   },
   "dependencies": {
-    "@types/express": "^4.17.17",
     "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "mongoose": "^7.1.1",
-    "ts-node-dev": "^2.0.0"
+    "express": "^4.21.2",
+    "mongoose": "^8.9.2",
+    "uuid": "^11.0.3"
   }
 }

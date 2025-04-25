@@ -9,10 +9,12 @@ async function bootstrap() {
     console.log('🚀 Database Connection Successful');
 
     app.listen(port, () => {
-      console.log(`Example app listening on port ${port}`);
+      console.log(`Server is listening on port ${port}`);
     });
   } catch (error) {
     console.log('🚀 Failed to connect database', error);
   }
 }
 bootstrap();
+
+
