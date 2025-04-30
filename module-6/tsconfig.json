@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+      "module": "NodeNext",        // Set the module system to NodeNext
+      "moduleResolution": "NodeNext", // Ensure proper module resolution
+      "target": "ESNext",           // Use the latest ECMAScript version
+      "esModuleInterop": true,      // Allow interoperability between ES and CommonJS modules
+      "skipLibCheck": true,         // Skip type checking of declaration files
+      "strict": true,               // Enable strict type-checking options
+      "outDir": "./dist",           // Output compiled files to the "dist" folder
+      "resolveJsonModule": true,    // Allow importing JSON files
+      "allowSyntheticDefaultImports": true  // Allow default imports from modules with no default export
+    },
+    "include": ["src/server.ts"],         // Include your source files
+    "exclude": ["node_modules"]       // Exclude node_modules
+  }
+  
