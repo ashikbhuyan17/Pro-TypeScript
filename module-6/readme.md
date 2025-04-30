@@ -20,12 +20,13 @@ Interface => interface.ts
  //kono ekta class theke jody instance create kory and ey  instance sathe jody 
 ekta method attarched thake setay hocce  instance method.
  class -> instance + method -> instance method 
- 
 
  const user = new User (payload ) // user -> class user -> instance
  user.save()  => that is method that is instance method and jehetu eta mongoose dce tay eta built in  instance methods
  >
 
+static = classs er sathe attached howa method jeta amra directly call korte pari using class 
+  //instance create korte hbe na, user.methodName() no need new user()
 
  <!-- 
  export const createUser = async (payload:IUser):Promise<IUser> =>{   //jehetu async tay eta promise return korbe and  promise ta IUser type er 
