@@ -1,0 +1,1 @@
+Check which users have more than 3 friends. => Operator: $size
